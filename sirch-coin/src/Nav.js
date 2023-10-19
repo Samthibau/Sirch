@@ -2,9 +2,9 @@ import { NavLink } from "react-router-dom";
 
 export default function NavBar() {
   return (
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">Sirch Coin</span>
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <div className="container-fluid">
+        <span className="navbar-brand mb-0 h1">Sirch Coin</span>
         <ul className="nav nav-underline">
           <li className="nav-item">
             <NavLink className="nav-link" to="#">
