@@ -20,11 +20,6 @@ export default function NavBar() {
                 Check Coin Balance
               </Nav.Link>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/coin/buy" eventKey="link-3">
-                Buy Sirch Coin
-              </Nav.Link>
-            </Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Container>
