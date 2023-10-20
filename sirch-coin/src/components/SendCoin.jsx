@@ -71,7 +71,7 @@ export default function SendCoin() {
                 onChange={emailChange}
                 autoComplete="email"
               />
-              <label htmlFor="email">Enter any Email</label>
+              <label htmlFor="email">Enter any email</label>
             </div>
             <div className="form-floating mb-3">
               <input

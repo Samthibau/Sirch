@@ -6,7 +6,7 @@ export default function NavBar() {
   return (
     <Navbar className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/home">Sirch Coin</Navbar.Brand>
+        <Navbar.Brand href="/">Sirch Coin</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Nav variant="tabs">

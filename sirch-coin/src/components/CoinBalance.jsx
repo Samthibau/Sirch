@@ -59,7 +59,7 @@ export default function CoinBalance() {
                 onChange={emailChange}
                 autoComplete="email"
               />
-              <label htmlFor="email">Enter your Email:</label>
+              <label htmlFor="email">Enter your email</label>
             </div>
             <button className="btn btn-dark" type="submit">
               Get Balance
