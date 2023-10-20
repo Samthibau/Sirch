@@ -3,9 +3,9 @@ export default function MainPage() {
     <>
       <h1>Welcome to Sirch Coin</h1>
       <p className="">
-        Current price <span className="orange-underline-price">$0.10</span>
+        Current price <span className="orange-underline-price">$0.10</span>{" "}
+        Value $1.00
       </p>
-      <p>Value $1.00</p>
       <a href="#" className="buy--btn">
         Buy Sirch Coin
       </a>
