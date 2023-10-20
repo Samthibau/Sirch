@@ -6,7 +6,7 @@ export default function MainPage() {
         Current price <span className="orange-underline-price">$0.10</span>{" "}
         Value $1.00
       </p>
-      <a href="/coin/buy" className="buy--btn">
+      <a href="/checkout" className="buy--btn">
         Buy Sirch Coin
       </a>
     </>

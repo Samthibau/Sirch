@@ -23,8 +23,9 @@ export default function SendCoin() {
     }
 
     const data = {};
+    console.log(data);
 
-    data.email = email;
+    data.recipientEmail = email;
     data.coin = coin;
 
     const sendUrl =

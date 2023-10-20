@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function BuyCoin() {
+export default function Checkout() {
   const [email, setEmail] = useState("");
   const [coin, setCoin] = useState(0);
   const [successMessage, setSuccessMessage] = useState("");
@@ -10,25 +10,17 @@ export default function BuyCoin() {
     setEmail(event.target.value);
   };
   const coinChange = (event) => {
-    const newValue = parseInt(event.target.value, 10);
-    setCoin(newValue >= 1 ? newValue : 1);
+    setCoin(event.target.value);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
 
-    if (!email || coin < 1) {
-      setError(
-        "Please enter a valid email and a coin amount greater than or equal to 1."
-      );
-      return;
-    }
+    const data = {};
 
-    const data = {
-      email,
-      coin,
-    };
+    data.email = email;
+    data.coin = coin;
 
     const buyUrl =
       "https://sirchcoinv1-production.up.railway.app/api/v1/payments/initialize-payment";

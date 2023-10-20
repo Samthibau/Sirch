@@ -28,10 +28,9 @@ export default function CoinBalance() {
 
     try {
       const response = await fetch(fetchUrl, fetchConfig);
-
       if (response.ok) {
         const result = await response.json();
-        setBalance(result.balance);
+        setBalance(result.coinBalance);
       } else {
         const errorMessage = `Error fetching balance. Status: ${response.status}`;
         setError(errorMessage);

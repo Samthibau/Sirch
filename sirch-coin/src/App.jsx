@@ -4,8 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SendCoin from "./components/SendCoin";
 import MainPage from "./MainPage";
 import CoinBalance from "./components/CoinBalance";
-import BuyCoin from "./components/BuyCoin";
-import "@stripe/stripe-js";
+import Checkout from "./components/CheckoutForm";
 
 export default function App() {
   return (
@@ -16,7 +15,7 @@ export default function App() {
           <Route path="/" Component={MainPage} />
           <Route path="coin/send" Component={SendCoin} />
           <Route path="coin/balance" Component={CoinBalance} />
-          <Route path="coin/buy" Component={BuyCoin} />
+          <Route path="checkout" Component={Checkout} />
         </Routes>
       </div>
     </BrowserRouter>
