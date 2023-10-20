@@ -2,3 +2,18 @@
   color: orange;
   text-decoration: underline;
 }
+
+.buy--btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.buy--btn:hover {
+  background-color: #333;
+}
