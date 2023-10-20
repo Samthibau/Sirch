@@ -18,13 +18,10 @@ export default function CoinBalance() {
       return;
     }
 
-    const data = { email };
-
     const fetchUrl =
       "https://sirchcoinv1-production.up.railway.app/api/v1/customers/balance";
     const fetchConfig = {
-      method: "POST",
-      body: JSON.stringify(data),
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
@@ -61,6 +58,7 @@ export default function CoinBalance() {
                 className="form-control"
                 value={email}
                 onChange={emailChange}
+                autoComplete="email"
               />
               <label htmlFor="email">Enter your Email:</label>
             </div>

@@ -68,6 +68,7 @@ export default function SendCoin() {
                 className="form-control"
                 value={email}
                 onChange={emailChange}
+                autoComplete="email"
               />
               <label htmlFor="email">Enter any Email</label>
             </div>
