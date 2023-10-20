@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export default function CoinBalance() {
   const [email, setEmail] = useState("");
-  const [balance, setBalance] = useState(0);
+  const [balance, setBalance] = useState(null);
   const [error, setError] = useState("");
 
   const emailChange = (event) => {
@@ -18,8 +18,7 @@ export default function CoinBalance() {
       return;
     }
 
-    const fetchUrl =
-      "https://sirchcoinv1-production.up.railway.app/api/v1/customers/balance";
+    const fetchUrl = `https://sirchcoinv1-production.up.railway.app/api/v1/customers/balance?email=${email}`;
     const fetchConfig = {
       method: "GET",
       headers: {
