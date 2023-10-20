@@ -55,7 +55,7 @@ export default function SendCoin() {
   return (
     <div className="row">
       <div className="offset-3 col-6">
-        <div className="shadow p-4 mt-4">
+        <div className="shadow p-4 mt-4" style={{ backgroundColor: "#FCF3DE" }}>
           <h1>Send Sirch Coin</h1>
           <form id="create-conference-form" onSubmit={handleSubmit}>
             <div className="form-floating mb-3">
@@ -89,7 +89,7 @@ export default function SendCoin() {
             {successMessage && (
               <div className="text-success">{successMessage}</div>
             )}
-            <button className="btn btn-primary">Send</button>
+            <button className="btn btn-dark">Send</button>
           </form>
         </div>
       </div>

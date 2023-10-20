@@ -45,7 +45,7 @@ export default function CoinBalance() {
   return (
     <div className="row">
       <div className="offset-3 col-6">
-        <div className="shadow p-4 mt-4">
+        <div className="shadow p-4 mt-4" style={{ backgroundColor: "#FCF3DE" }}>
           <h1>Sirch Coin Balance</h1>
           <form id="create-conference-form" onSubmit={fetchBalance}>
             <div className="form-floating mb-3">
@@ -62,7 +62,7 @@ export default function CoinBalance() {
               />
               <label htmlFor="email">Enter your Email:</label>
             </div>
-            <button className="btn btn-primary" type="submit">
+            <button className="btn btn-dark" type="submit">
               Get Balance
             </button>
           </form>
