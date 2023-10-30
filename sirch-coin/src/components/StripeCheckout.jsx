@@ -1,28 +1,31 @@
 import React, { useState } from "react";
+import { loadStripe } from "@stripe/stripe-js";
 
-export default function Checkout() {
+export default function CheckoutForm() {
   const [email, setEmail] = useState("");
   const [coin, setCoin] = useState(0);
-  const [successMessage, setSuccessMessage] = useState("");
-  const [error, setError] = useState("");
+  const [totalUSD, setTotalUSD] = useState(0);
 
   const emailChange = (event) => {
     setEmail(event.target.value);
   };
+
   const coinChange = (event) => {
-    setCoin(event.target.value);
+    const numberOfCoins = parseFloat(event.target.value);
+    setCoin(numberOfCoins);
+    const pricePerCoin = 0.1;
+    const calculatedUSD = numberOfCoins * pricePerCoin;
+    setTotalUSD(calculatedUSD);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setError("");
-
     const data = {};
 
     data.email = email;
-    data.coin = coin;
+    data.numberOfCoins = coin;
 
-    const buyUrl =
+    const initializePaymentUrl =
       "https://sirchcoinv1-production.up.railway.app/api/v1/payments/initialize-payment";
     const fetchConfig = {
       method: "POST",
@@ -31,21 +34,21 @@ export default function Checkout() {
         "Content-Type": "application/json",
       },
     };
-
-    try {
-      const response = await fetch(buyUrl, fetchConfig);
-      if (response.ok) {
-        const responseData = await response.json();
-        setSuccessMessage(responseData.message);
-        setEmail("");
-        setCoin(0);
-      } else {
-        const errorMessage = `Error initializing payment. Status: ${response.status}`;
-        setError(errorMessage);
-      }
-    } catch (error) {
-      setError(`An error occurred: ${error.message}`);
+    const response = await fetch(initializePaymentUrl, fetchConfig);
+    if (response.ok) {
+      setEmail("");
+      setCoin(0);
+      setTotalUSD(0);
     }
+  };
+
+  let stripePromise;
+  const getStripe = () => {
+    if (!stripePromise) {
+      stripePromise = loadStripe("pk_test_6rOaG7p9vtW2VyduXtVfr7JV00sqg9HpxQ");
+    }
+
+    return stripePromise;
   };
 
   return (
@@ -53,11 +56,12 @@ export default function Checkout() {
       <div className="offset-3 col-6">
         <div className="shadow p-4 mt-4" style={{ backgroundColor: "#FCF3DE" }}>
           <h1>Buy Sirch Coin</h1>
+          <p> Buying is super easy.</p>
           <p>
-            Current price per coin is{" "}
-            <span className="orange-underline-price">$0.10</span> USD
+            Current price per coin {""}
+            <span className="orange-underline-price">$0.10</span>
           </p>
-          <form id="buy-coin-form" onSubmit={handleSubmit}>
+          <form id="create-conference-form" onSubmit={handleSubmit}>
             <div className="form-floating mb-3">
               <input
                 placeholder="Email"
@@ -70,7 +74,7 @@ export default function Checkout() {
                 onChange={emailChange}
                 autoComplete="email"
               />
-              <label htmlFor="email">Enter your email address</label>
+              <label htmlFor="email">Enter any email</label>
             </div>
             <div className="form-floating mb-3">
               <input
@@ -83,13 +87,12 @@ export default function Checkout() {
                 value={coin}
                 onChange={coinChange}
               />
-              <label htmlFor="coin">How many coins do you want to buy</label>
+              <label htmlFor="coin">Enter Amount of Coin</label>
             </div>
-            {error && <div className="text-danger">{error}</div>}
-            {successMessage && (
-              <div className="text-success">{successMessage}</div>
-            )}
-            <button className="btn btn-dark">Buy Sirch Coin</button>
+            <p>
+              <strong>Total USD: ${totalUSD.toFixed(2)}</strong>
+            </p>
+            <button className="btn btn-dark">Buy</button>
           </form>
         </div>
       </div>

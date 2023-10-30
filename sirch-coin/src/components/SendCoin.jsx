@@ -3,8 +3,6 @@ import React, { useState } from "react";
 export default function SendCoin() {
   const [email, setEmail] = useState("");
   const [coin, setCoin] = useState(0);
-  const [successMessage, setSuccessMessage] = useState("");
-  const [error, setError] = useState("");
 
   const emailChange = (event) => {
     setEmail(event.target.value);
@@ -15,13 +13,6 @@ export default function SendCoin() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setError("");
-
-    if (!email || !coin) {
-      setError("Both email and coin amount are required.");
-      return;
-    }
-
     const data = {};
     console.log(data);
 
@@ -37,19 +28,10 @@ export default function SendCoin() {
         "Content-Type": "application/json",
       },
     };
-
-    try {
-      const response = await fetch(sendUrl, fetchConfig);
-      if (response.ok) {
-        setSuccessMessage("Coins sent successfully!");
-        setEmail("");
-        setCoin(0);
-      } else {
-        const errorMessage = `Error sending coins. Status: ${response.status}`;
-        setError(errorMessage);
-      }
-    } catch (error) {
-      setError(`An error occurred: ${error.message}`);
+    const response = await fetch(sendUrl, fetchConfig);
+    if (response.ok) {
+      setEmail("");
+      setCoin(0);
     }
   };
 
@@ -87,10 +69,6 @@ export default function SendCoin() {
               />
               <label htmlFor="coin">Enter Amount of Coin</label>
             </div>
-            {error && <div className="text-danger">{error}</div>}
-            {successMessage && (
-              <div className="text-success">{successMessage}</div>
-            )}
             <button className="btn btn-dark">Send</button>
           </form>
         </div>

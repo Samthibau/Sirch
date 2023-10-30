@@ -1,10 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "@stripe/stripe-js";
 import NavBar from "./Nav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SendCoin from "./components/SendCoin";
 import MainPage from "./MainPage";
 import CoinBalance from "./components/CoinBalance";
-import Checkout from "./components/CheckoutForm";
+import CheckoutForm from "./components/StripeCheckout";
 
 export default function App() {
   return (
@@ -15,7 +16,7 @@ export default function App() {
           <Route path="/" Component={MainPage} />
           <Route path="coin/send" Component={SendCoin} />
           <Route path="coin/balance" Component={CoinBalance} />
-          <Route path="checkout" Component={Checkout} />
+          <Route path="/checkout" Component={CheckoutForm} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -32,7 +32,7 @@ export default function CoinBalance() {
         const result = await response.json();
         setBalance(result.coinBalance);
       } else {
-        const errorMessage = `Error fetching balance. Status: ${response.status}`;
+        const errorMessage = "Invalid Email";
         setError(errorMessage);
       }
     } catch (error) {
@@ -63,9 +63,9 @@ export default function CoinBalance() {
             <button className="btn btn-dark" type="submit">
               Get Balance
             </button>
+            {error && <p className="text-danger">{error}</p>}
+            {balance !== null && <h4>Your Balance: {balance}</h4>}
           </form>
-          {error && <p className="text-danger">{error}</p>}
-          {balance !== null && <h4>Your Balance: {balance}</h4>}
         </div>
       </div>
     </div>
