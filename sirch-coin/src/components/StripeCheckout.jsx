@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { loadStripe } from "@stripe/stripe-js";
 
 export default function CheckoutForm() {
   const [email, setEmail] = useState("");
@@ -40,15 +39,6 @@ export default function CheckoutForm() {
       setCoin(0);
       setTotalUSD(0);
     }
-  };
-
-  let stripePromise;
-  const getStripe = () => {
-    if (!stripePromise) {
-      stripePromise = loadStripe("pk_test_6rOaG7p9vtW2VyduXtVfr7JV00sqg9HpxQ");
-    }
-
-    return stripePromise;
   };
 
   return (
