@@ -11,14 +11,12 @@ export default function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      <div className="container">
-        <Routes>
-          <Route path="/" Component={MainPage} />
-          <Route path="coin/send" Component={SendCoin} />
-          <Route path="coin/balance" Component={CoinBalance} />
-          <Route path="/checkout" Component={CheckoutForm} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" Component={MainPage} />
+        <Route path="coin/send" Component={SendCoin} />
+        <Route path="coin/balance" Component={CoinBalance} />
+        <Route path="/checkout" Component={CheckoutForm} />
+      </Routes>
     </BrowserRouter>
   );
 }
