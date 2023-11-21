@@ -1,19 +1,33 @@
+import { Link } from "react-router-dom";
+
 export default function MainPage() {
   return (
     <>
       <h3 className="page-header">Avaliable Transactions</h3>
       <div className="button-container">
-        <a href="coin/send">Send Money</a>
+        <Link to="coin/send" className="action-btn">
+          Send Money
+        </Link>
 
-        <a href="checkout">Deposit</a>
+        <Link to="checkout" className="action-btn">
+          Deposit
+        </Link>
 
-        <a href="coin/balance">Balance Inquiry</a>
+        <Link to="coin/balance" className="action-btn">
+          Balance Inquiry
+        </Link>
 
-        <a href="/#">Transfer History</a>
+        <Link to="/#" className="action-btn">
+          Transfer History
+        </Link>
 
-        <a href="/#">Preferences</a>
+        <Link to="/#" className="action-btn">
+          Preferences
+        </Link>
 
-        <a href="/#">Help</a>
+        <Link to="/#" className="action-btn">
+          Help
+        </Link>
       </div>
     </>
   );

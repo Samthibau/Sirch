@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SendCoin from "./components/SendCoin";
 import MainPage from "./MainPage";
 import CoinBalance from "./components/CoinBalance";
-import CheckoutForm from "./components/StripeCheckout";
+import DepositForm from "./components/DepositForm";
 
 export default function App() {
   return (
@@ -15,7 +15,7 @@ export default function App() {
         <Route path="/" Component={MainPage} />
         <Route path="coin/send" Component={SendCoin} />
         <Route path="coin/balance" Component={CoinBalance} />
-        <Route path="/checkout" Component={CheckoutForm} />
+        <Route path="/checkout" Component={DepositForm} />
       </Routes>
     </BrowserRouter>
   );
