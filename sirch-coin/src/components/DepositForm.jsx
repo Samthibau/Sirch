@@ -9,10 +9,8 @@ export default function DepositForm() {
 
   const handleAmountButtonClick = (amount) => {
     setSelectedAmount(amount);
-    // Calculate corresponding coin amount based on the conversion rate
-    setCoinAmount((amount / 0.1).toFixed(2));
-    // Calculate total USD amount
-    setTotalUSD(amount.toFixed(2));
+    setCoinAmount(`${(amount / 0.1).toFixed(2)}`);
+    setTotalUSD(`$${amount.toFixed(2)} USD`);
   };
 
   const emailChange = (event) => {
@@ -20,13 +18,43 @@ export default function DepositForm() {
   };
 
   const handleCoinInputChange = (event) => {
-    // Update the coin amount and recalculate the corresponding USD amount
     setCoinAmount(event.target.value);
     setSelectedAmount((event.target.value * 0.1).toFixed(2));
-    // Calculate total USD amount
     setTotalUSD((event.target.value * 0.1).toFixed(2));
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const data = {
+      email: email,
+      numberOfCoins: coinAmount,
+      selectedAmount: selectedAmount,
+    };
+
+    try {
+      const intializePaymentUrl =
+        "https://sirchcoinv1-production.up.railway.app/api/v1/payments/initialize-payment";
+      const fetchConfig = {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const response = await fetch(intializePaymentUrl, fetchConfig);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      setEmail("");
+      setCoinAmount("");
+      setTotalUSD("Total USD");
+    } catch (error) {
+      console.error("Error during fetch:", error);
+    }
+  };
   return (
     <>
       <h3 className="page-header">Buy Sirch Coins</h3>
@@ -35,7 +63,7 @@ export default function DepositForm() {
           Please enter an amount of USD that you'd like to spend buying Sirch
           Coins, and then press Buy.
         </p>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="price-container">
             <div className="first-row">
               <button
@@ -59,7 +87,7 @@ export default function DepositForm() {
               <input
                 placeholder="Amount of Coin"
                 required
-                type="number"
+                type="text"
                 name="coin"
                 id="coin"
                 className="cash-input"
@@ -106,6 +134,7 @@ export default function DepositForm() {
               id="totalUSD"
               className="total-input"
               value={totalUSD}
+              onChange={handleCoinInputChange}
             />
           </div>
           <div className="bottom-btn-container">
