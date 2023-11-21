@@ -68,13 +68,14 @@
 .page-text {
   text-align: center;
   font-size: x-large;
-  margin-bottom: 50px;
+  margin-top: 100px;
 }
 
 .price-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 50px;
 }
 
 .first-row {
@@ -101,31 +102,36 @@
 }
 
 .cash-btn {
-  width: 80px;
+  width: 150px; /* Increase the width */
+  font-size: 20px; /* Increase the font size */
   font-weight: 700;
   text-decoration: none;
   color: white;
+  margin: 0 auto;
+}
+
+.cash-input {
+  margin: 0 auto;
+  padding: 20px; /* Increase the padding */
+  width: 350px; /* Increase the width */
+  background-color: #5590e2;
+  color: white;
+  border: none;
+  font-size: 18px; /* Increase the font size */
+}
+
+.total-input {
+  margin: 0 auto;
+  padding: 20px; /* Increase the padding */
+  width: 350px; /* Increase the width */
+  background-color: #5d5d5d;
+  color: white;
+  margin-top: 30px;
+  font-size: 18px; /* Increase the font size */
 }
 
 .cash-btn:hover {
   background-color: #5d5d5d;
-}
-
-.cash-input {
-  margin-left: 40px;
-  padding: 10px;
-  width: 250px;
-  background-color: #5590e2;
-  color: white;
-  border: none;
-}
-
-.total-input {
-  padding: 10px;
-  width: 250px;
-  background-color: #5d5d5d;
-  color: white;
-  margin-top: 30px;
 }
 
 #coin::placeholder,
@@ -135,10 +141,15 @@
 }
 
 .bottom-btn-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-top: 80px;
+  margin-top: 20px; /* Adjust the margin to give some space from the bottom */
+  padding: 20px; /* Add padding for better spacing */
 }
 
 .big-btn-red {
@@ -151,6 +162,7 @@
   border: 7px solid black;
   border-radius: 30px;
   padding: 10px;
+  margin-bottom: 20px;
   width: 300px;
 }
 
@@ -164,5 +176,50 @@
   border: 7px solid black;
   border-radius: 30px;
   padding: 10px;
+  margin-bottom: 20px;
   width: 300px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .bottom-btn-container {
+    position: relative; /* or remove the position property */
+    bottom: auto;
+    left: auto;
+    right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding: 20px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .navbar {
+    justify-content: flex-start;
+  }
+
+  .navbar-item {
+    font-size: 28px;
+  }
+
+  .page-header {
+    padding: 20px;
+    font-size: 1.5em;
+  }
+
+  .button-container > a {
+    width: 300px;
+    font-size: 24px;
+  }
+
+  .cash-input,
+  .total-input {
+    width: 300px;
+  }
+
+  .big-btn-red,
+  .big-btn-blue {
+    width: 350px;
+  }
 }
