@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function CoinBalance() {
   const [email, setEmail] = useState("");
@@ -41,33 +42,42 @@ export default function CoinBalance() {
   };
 
   return (
-    <div className="row">
-      <div className="offset-3 col-6">
-        <div className="shadow p-4 mt-4" style={{ backgroundColor: "#FCF3DE" }}>
-          <h1>Sirch Coin Balance</h1>
-          <form id="create-conference-form" onSubmit={fetchBalance}>
-            <div className="form-floating mb-3">
-              <input
-                placeholder="Email"
-                required
-                type="email"
-                name="email"
-                id="email"
-                className="form-control"
-                value={email}
-                onChange={emailChange}
-                autoComplete="email"
-              />
-              <label htmlFor="email">Enter your email</label>
-            </div>
-            <button className="btn btn-dark" type="submit">
-              Get Balance
-            </button>
-            {error && <p className="text-danger">{error}</p>}
-            {balance !== null && <h4>Your Balance: {balance}</h4>}
-          </form>
+    <>
+      <h3 className="page-header">Balance Inquiry</h3>
+      <div className="balance-container">
+        <p className="page-text">
+          Review your balance information, then press <strong>Buy More</strong>{" "}
+          when you are done.
+        </p>
+        <form onSubmit={fetchBalance}>
+          <input
+            placeholder="Enter your Email"
+            required
+            type="email"
+            name="email"
+            id="email"
+            className="email-balance"
+            value={email}
+            onChange={emailChange}
+            autoComplete="email"
+          />
+          <button className="balance-btn" type="submit">
+            Get Balance
+          </button>
+          {error && <p className="text-danger">{error}</p>}
+          {balance !== null && (
+            <h4 className="balance">${balance} Sirch Coins</h4>
+          )}
+        </form>
+        <div className="bottom-btn-container">
+          <Link to="/" className="big-btn-red">
+            Back
+          </Link>
+          <Link to="/checkout" className="big-btn-blue">
+            Buy More
+          </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 }

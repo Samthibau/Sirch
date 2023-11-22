@@ -102,8 +102,8 @@
 }
 
 .cash-btn {
-  width: 150px; /* Increase the width */
-  font-size: 20px; /* Increase the font size */
+  width: 150px;
+  font-size: 20px;
   font-weight: 700;
   text-decoration: none;
   color: white;
@@ -112,22 +112,22 @@
 
 .cash-input {
   margin: 0 auto;
-  padding: 20px; /* Increase the padding */
-  width: 350px; /* Increase the width */
+  padding: 20px;
+  width: 350px;
   background-color: #5590e2;
   color: white;
   border: none;
-  font-size: 18px; /* Increase the font size */
+  font-size: 18px;
 }
 
 .total-input {
   margin: 0 auto;
-  padding: 20px; /* Increase the padding */
-  width: 350px; /* Increase the width */
+  padding: 20px;
+  width: 350px;
   background-color: #5d5d5d;
   color: white;
   margin-top: 30px;
-  font-size: 18px; /* Increase the font size */
+  font-size: 18px;
 }
 
 .cash-btn:hover {
@@ -148,8 +148,8 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-top: 20px; /* Adjust the margin to give some space from the bottom */
-  padding: 20px; /* Add padding for better spacing */
+  margin-top: 20px;
+  padding: 20px;
 }
 
 .big-btn-red {
@@ -180,9 +180,51 @@
   width: 300px;
 }
 
+/* Balance Inquiry */
+.balance-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.email-balance {
+  margin: 20px auto;
+  padding: 20px;
+  width: 350px;
+  background-color: #5590e2;
+  color: white;
+  border: none;
+  font-size: 18px;
+}
+
+.balance-btn {
+  margin-top: 30px;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  background-color: #5d5d5d;
+  color: white;
+  border: none;
+}
+
+.balance-btn:hover {
+  color: black;
+}
+
+.balance {
+  margin-top: 30px;
+}
+
 @media only screen and (max-width: 1200px) {
   .bottom-btn-container {
-    position: relative; /* or remove the position property */
+    position: relative;
     bottom: auto;
     left: auto;
     right: auto;
