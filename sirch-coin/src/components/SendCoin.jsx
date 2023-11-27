@@ -18,7 +18,6 @@ export default function SendCoin() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = {};
-    console.log(data);
 
     data.recipientEmail = email;
     data.senderEmail = userEmail;
@@ -26,6 +25,7 @@ export default function SendCoin() {
 
     const sendUrl =
       "https://sirchcoinv1-production.up.railway.app/api/v1/customers/transfer-coins";
+
     const fetchConfig = {
       method: "POST",
       body: JSON.stringify(data),
@@ -33,34 +33,45 @@ export default function SendCoin() {
         "Content-Type": "application/json",
       },
     };
-    const response = await fetch(sendUrl, fetchConfig);
-    if (response.ok) {
-      setEmail("");
-      setUserEmail("");
-      setCoin(0);
+
+    try {
+      const response = await fetch(sendUrl, fetchConfig);
+      if (response.ok) {
+        setEmail("");
+        setUserEmail("");
+        setCoin(0);
+      } else {
+        console.error(
+          "Failed to send coins. Server responded with",
+          response.status,
+          response.statusText
+        );
+      }
+    } catch (error) {
+      console.error("An error occurred during the fetch:", error);
     }
   };
 
   return (
     <div className="row">
       <div className="offset-3 col-6">
-        <div className="shadow p-4 mt-4" style={{ backgroundColor: "#FCF3DE" }}>
+        <div className="shadow p-4 mt-4">
           <h1>Send Sirch Coin</h1>
           <p> Sending is super easy. Do it now.</p>
-          <form id="create-conference-form" onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <div className="form-floating mb-3">
               <input
                 placeholder="Email"
                 required
                 type="email"
-                name="email"
-                id="email"
+                name="userEmail"
+                id="userEmail"
                 className="form-control"
                 value={userEmail}
                 onChange={userEmailChange}
                 autoComplete="email"
               />
-              <label htmlFor="email">Enter your email</label>
+              <label htmlFor="userEmail">Enter your email</label>
             </div>
             <div className="form-floating mb-3">
               <input
@@ -68,7 +79,7 @@ export default function SendCoin() {
                 required
                 type="email"
                 name="email"
-                id="email"
+                id="recipientEmail"
                 className="form-control"
                 value={email}
                 onChange={emailChange}
@@ -76,7 +87,6 @@ export default function SendCoin() {
               />
               <label htmlFor="email">Enter any email</label>
             </div>
-
             <div className="form-floating mb-3">
               <input
                 placeholder="Amount of Coin"

@@ -49,7 +49,7 @@ export default function DepositForm() {
       }
 
       setEmail("");
-      setCoinAmount("");
+      setCoinAmount(0);
       setTotalUSD("Total USD");
     } catch (error) {
       console.error("Error during fetch:", error);
