@@ -2,10 +2,14 @@ import React, { useState } from "react";
 
 export default function SendCoin() {
   const [email, setEmail] = useState("");
+  const [userEmail, setUserEmail] = useState("");
   const [coin, setCoin] = useState(0);
 
   const emailChange = (event) => {
     setEmail(event.target.value);
+  };
+  const userEmailChange = (event) => {
+    setUserEmail(event.target.value);
   };
   const coinChange = (event) => {
     setCoin(event.target.value);
@@ -17,7 +21,8 @@ export default function SendCoin() {
     console.log(data);
 
     data.recipientEmail = email;
-    data.coin = coin;
+    data.senderEmail = userEmail;
+    data.numberOfCoins = coin;
 
     const sendUrl =
       "https://sirchcoinv1-production.up.railway.app/api/v1/customers/transfer-coins";
@@ -31,6 +36,7 @@ export default function SendCoin() {
     const response = await fetch(sendUrl, fetchConfig);
     if (response.ok) {
       setEmail("");
+      setUserEmail("");
       setCoin(0);
     }
   };
@@ -50,12 +56,27 @@ export default function SendCoin() {
                 name="email"
                 id="email"
                 className="form-control"
+                value={userEmail}
+                onChange={userEmailChange}
+                autoComplete="email"
+              />
+              <label htmlFor="email">Enter your email</label>
+            </div>
+            <div className="form-floating mb-3">
+              <input
+                placeholder="Email"
+                required
+                type="email"
+                name="email"
+                id="email"
+                className="form-control"
                 value={email}
                 onChange={emailChange}
                 autoComplete="email"
               />
               <label htmlFor="email">Enter any email</label>
             </div>
+
             <div className="form-floating mb-3">
               <input
                 placeholder="Amount of Coin"
