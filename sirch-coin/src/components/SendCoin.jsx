@@ -1,9 +1,24 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function SendCoin() {
   const [email, setEmail] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [coin, setCoin] = useState(0);
+  const [coinAmount, setCoinAmount] = useState("");
+
+
+    // Function to handle changes in the coin input field
+    const handleCoinInputChange = (event) => {
+      setCoinAmount(event.target.value);
+    };
+  
+    // Function to handle different cash amounts button clicks
+    const handleAmountButtonClick = (amount) => {
+      setCoinAmount(amount.toString()); // Assuming coinAmount should be a string
+      setCoin(amount);
+    };
+  
 
   const emailChange = (event) => {
     setEmail(event.target.value);
@@ -52,57 +67,107 @@ export default function SendCoin() {
     }
   };
 
+
+  
+
   return (
-    <div className="row">
-      <div className="offset-3 col-6">
-        <div className="shadow p-4 mt-4">
-          <h1>Send Sirch Coin</h1>
-          <p> Sending is super easy. Do it now.</p>
-          <form onSubmit={handleSubmit}>
-            <div className="form-floating mb-3">
+    <div className="send-coin-container">
+      <div>
+        <h3 className="page-header">Send Sirch Coins</h3>
+        <p className="page-text">
+        Sending is super easy. Do it now.</p>
+        <form onSubmit={handleSubmit}>
+          <div className="price-container">
+            <div className="cash-buttons">
+              <div className="first-row">
+                <button
+                  className="cash1-btn"
+                  onClick={() => handleAmountButtonClick(20)}
+                >
+                  $20
+                </button>
+                <button
+                  className="cash1-btn"
+                  onClick={() => handleAmountButtonClick(40)}
+                >
+                  $40
+                </button>
+                <button
+                  className="cash1-btn"
+                  onClick={() => handleAmountButtonClick(100)}
+                >
+                  $100
+                </button>
+              </div>
+              <div className="second-row">
+                <button
+                  className="cash1-btn"
+                  onClick={() => handleAmountButtonClick(500)}
+                >
+                  $500
+                </button>
+                <button
+                  className="cash1-btn"
+                  onClick={() => handleAmountButtonClick(1000)}
+                >
+                  $1000
+                </button>
+                <button
+                  className="cash1-btn"
+                  onClick={() => handleAmountButtonClick(239)}
+                >
+                  $239
+                </button>
+              </div>
+            </div>
+
+           
+            <input
+              placeholder="Other Amount"
+              required
+              type="text"
+              name="coin"
+              id="coin"
+              className="cash1-input other-amount-input"
+              value={coinAmount}
+              onChange={handleCoinInputChange}
+            />
+
+          
+            <div className="email-inputs">
               <input
-                placeholder="Email"
+                placeholder="Your Email"
                 required
                 type="email"
                 name="userEmail"
                 id="userEmail"
-                className="form-control"
+                className="cash1-input your-email-input"
                 value={userEmail}
                 onChange={userEmailChange}
                 autoComplete="email"
               />
-              <label htmlFor="userEmail">Enter your email</label>
-            </div>
-            <div className="form-floating mb-3">
               <input
-                placeholder="Email"
+                placeholder="Recipient's Email"
                 required
                 type="email"
                 name="email"
                 id="recipientEmail"
-                className="form-control"
+                className="cash1-input recipient-email-input"
                 value={email}
                 onChange={emailChange}
                 autoComplete="email"
               />
-              <label htmlFor="email">Enter any email</label>
             </div>
-            <div className="form-floating mb-3">
-              <input
-                placeholder="Amount of Coin"
-                required
-                type="number"
-                name="coin"
-                id="coin"
-                className="form-control"
-                value={coin}
-                onChange={coinChange}
-              />
-              <label htmlFor="coin">Enter Amount of Coin</label>
-            </div>
-            <button className="btn btn-dark">Send</button>
-          </form>
-        </div>
+          </div>
+          <div className="bottom-btn-container">
+            <Link to="/" className="big-btn-red">
+              Back
+            </Link>
+            <button className="send-btn big-btn-blue">
+              Send
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

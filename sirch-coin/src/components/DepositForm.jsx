@@ -60,7 +60,7 @@ export default function DepositForm() {
       <h3 className="page-header">Buy Sirch Coins</h3>
       <div className="buy-container">
         <p className="page-text">
-          Please enter an amount of USD that you'd like to spend buying Sirch
+          Please enter an amount in USD that you'd like to spend buying Sirch
           Coins, and then press <strong>Buy</strong>.
         </p>
         <form onSubmit={handleSubmit}>

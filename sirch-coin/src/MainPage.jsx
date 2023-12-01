@@ -17,15 +17,15 @@ export default function MainPage() {
           Balance Inquiry
         </Link>
 
-        <Link to="/#" className="action-btn">
+        <Link to="/transferhistory" className="action-btn">
           Transfer History
         </Link>
 
-        <Link to="/#" className="action-btn">
+        <Link to="preferences" className="action-btn">
           Preferences
         </Link>
 
-        <Link to="/#" className="action-btn">
+        <Link to="help" className="action-btn">
           Help
         </Link>
       </div>
