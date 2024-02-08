@@ -14,6 +14,9 @@ export default function NavBar() {
         <li className="navbar-item">
           <a href="/"> SirchCoin </a>
         </li>
+        <li>
+          <a href="login">Login</a>
+        </li>
       </ul>
     </>
   );
